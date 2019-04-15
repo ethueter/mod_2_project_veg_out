@@ -13,6 +13,10 @@
         <%=f.label :email%><br>
         <%=f.text_field :email%><br>
         <br>
+        <%=label_tag 'New Password'%><br>
+        <%=f.password_field :password_digest%><br>
+        <%=f.password_field :password_digest_confirmation%><br>
+        <br>
         <%=f.submit "Submit"%>
     <%end%>
 </html>
