@@ -8,5 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       
       t.timestamps
     end
+    add_column :users, :email, :string
   end
 end
