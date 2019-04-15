@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
     def show
         @user=User.find(params[:id])
@@ -15,7 +15,7 @@ class UserController < ApplicationController
             redirect_to user_path(@user)
         else
             @error="New user information invalid. Please re-enter."
-            render: new_user_path
+            render :new_user_path
         end
     end
 
@@ -24,7 +24,7 @@ class UserController < ApplicationController
     end
 
     def update
-        @user=
+
     end
 
     private
