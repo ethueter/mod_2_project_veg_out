@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+I just changed a bunch of stuff. reviews are working.
+
+
 YELP API ACCESS
 Client ID
 _x4fZVfi3sYDTpvme8cA9A
