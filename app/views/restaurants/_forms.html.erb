@@ -1,0 +1,19 @@
+<%= form_for @restaurant do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<%= f.label :phone %>
+<%= f.text_field :phone %><br>
+<%= f.label :accepts_reservation %><br>
+<p><%= f.radio_button :accepts_reservation, true %>Yes</p>
+<p><%= f.radio_button :accepts_reservation, false %>No</p><br>
+<%= f.label :onsite_parking %><br>
+<p><%= f.radio_button :onsite_parking, true %>Yes</p>
+<p><%= f.radio_button :onsite_parking, false %>No</p><br>
+<%= f.label "Website" %>
+<%= f.text_field :url %><br>
+<p>Tell us about your restaurant. What is your approach to providing Vegetarian dishes?</p><br>
+<%= f.text_area :description %>
+<%= f.submit %>
+<% end %>

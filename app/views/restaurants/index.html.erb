@@ -1,0 +1,22 @@
+<h1><%=Create a New Restaurant! %></h1>
+<p>Only restaurant owners can submit new restaurants to be added to Veg-Out. Once you have submitted your restaurant you will be contacted by our staff to confirm that you are the owner.</p>
+
+<%= form_for @restaurant do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<%= f.label :phone %>
+<%= f.text_field :phone %>
+<%= f.label :accepts_reservation %>
+<%= f.radio_button :accepts_reservation, true %><p>Yes</p>
+<%= f.radio_button :accepts_reservation, false %><p>No</p>
+<%= f.label :onsite_parking %>
+<%= f.radio_button :onsite_parking, true %><p>Yes</p>
+<%= f.radio_button :onsite_parking, false %><p>No</p>
+<%= f.label :url %>
+<%= f.text_field :url %>
+<%= f.label :description
+<%= f.text_area :description %>
+<%= f.submit %>
+<% end %>
