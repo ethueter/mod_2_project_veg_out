@@ -15,7 +15,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            @error="New user information invalid. Please re-enter."
+flash[:create_user_fail]="New user information invalid. Please re-enter."
             render :new_user_path
         end
     end
