@@ -1,12 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 
 <h3>Contact info:</h3>
-<p><%= @restaurant.phone , @restaurant.address %></p>
+<p><%= @restaurant.phone%><%= @restaurant.address %></p>
 <h3>Info:</h3>
 <% if @restaurant.accepts_reservation%>
    <p><%= link_to "Reservations", @restaurant.url %></p>
   <% end %>
-<%= if @restaurant.onsite_parking %>
+<% if @restaurant.onsite_parking %>
     <p><%= "Onsite Parking Available" %></p>
     <% end %>
 

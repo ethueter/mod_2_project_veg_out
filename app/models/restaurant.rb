@@ -3,10 +3,11 @@ class Restaurant < ApplicationRecord
   has_many  :reviews
   has_many  :menu_items
   has_many  :users, through: :reviews
-  validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :phone, length: { is: 10}
-  validates :description, length: {minimum: 100}
+  has_many  :cuisines, through: :menu_items
+  # validates :name, presence: true
+  # validates :name, uniqueness: true
+  # validates :phone, length: { is: 10}
+  # validates :description, length: {minimum: 100}
 
   def most_recent_review
   end
@@ -24,9 +25,5 @@ class Restaurant < ApplicationRecord
   def most_reviews
   end
 
-  def cuisines
-    Restaurant.all.map do |r|
-      r.cuisine
-    end.unique
-  end
+
 end

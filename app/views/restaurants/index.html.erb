@@ -4,13 +4,15 @@
 <h2>Restaurant Spotlight</h2>
 <%= link_to @spotlight.name, restaurant_path(@spotlight) %>
 
-<p>Searh by Cuisine:</p>
+
 
 <%= form_with(url: "/search", method: "get") do %>
   <%= label_tag(:cuisine, "Search by cuisine:") %>
-  <%= select_tag :cuisine, options_for_select(@??.map{ |r| r.cuisine}) %>
+  <%= select_tag :cuisine, options_for_select(Cuisine.all.map{|c| c.name}) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+
 
 <p>Highest Rated:</p>
 
