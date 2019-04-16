@@ -13,8 +13,9 @@
         <%=f.label :email%><br>
         <%=f.text_field :email%><br>
         <br>
-        <%=label_tag 'New Password'%><br>
+        <%=f.label :password%><br>
         <%=f.password_field :password%><br>
+        <%=label_tag 'Confirm Password'%><br>
         <%=f.password_field :password_confirmation%><br>
         <br>
         <%=f.submit "Submit"%>
