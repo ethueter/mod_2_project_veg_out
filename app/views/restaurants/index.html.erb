@@ -1,22 +1,18 @@
-<h1><%=Create a New Restaurant! %></h1>
-<p>Only restaurant owners can submit new restaurants to be added to Veg-Out. Once you have submitted your restaurant you will be contacted by our staff to confirm that you are the owner.</p>
+<h1>Welcome to Veg-Out</h1>
+<h3>A community for vegetarians to find and review local restaurants </h3>
 
-<%= form_for @restaurant do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :address %>
-<%= f.text_field :address %>
-<%= f.label :phone %>
-<%= f.text_field :phone %>
-<%= f.label :accepts_reservation %>
-<%= f.radio_button :accepts_reservation, true %><p>Yes</p>
-<%= f.radio_button :accepts_reservation, false %><p>No</p>
-<%= f.label :onsite_parking %>
-<%= f.radio_button :onsite_parking, true %><p>Yes</p>
-<%= f.radio_button :onsite_parking, false %><p>No</p>
-<%= f.label :url %>
-<%= f.text_field :url %>
-<%= f.label :description
-<%= f.text_area :description %>
-<%= f.submit %>
+<h2>Restaurant Spotlight</h2>
+<%= link_to @spotlight.name, restaurant_path(@spotlight) %>
+
+<p>Searh by Cuisine:</p>
+
+<%= form_with(url: "/search", method: "get") do %>
+  <%= label_tag(:cuisine, "Search by cuisine:") %>
+  <%= select_tag :cuisine, options_for_select(@??.map{ |r| r.cuisine}) %>
+  <%= submit_tag("Search") %>
 <% end %>
+
+<p>Highest Rated:</p>
+
+
+<p>Most Recent Review:</p>
