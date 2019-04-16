@@ -25,7 +25,14 @@ flash[:create_user_fail]="New user information invalid. Please re-enter."
     end
 
     def update
-
+        @user=User.find(params[:id])
+        if  @user.update(user_params)
+flash[:update_user_success]="Your profile has been successfully updated."
+            redirect_to user_path(@user)
+        else
+flash[:update_user_fail]="There was a problem while updating your profile. Please try again."
+            redirect_to edit_user_path(@user)
+        end
     end
 
     private
