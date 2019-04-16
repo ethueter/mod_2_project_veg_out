@@ -1,19 +1,20 @@
 <h1><%= @restaurant.name %></h1>
 
 <h3>Contact info:</h3>
-<p><%= @restaurant.phone , @restaurant.address %></p>
+  <p><%= @restaurant.phone %> <%= @restaurant.address %></p>
 <h3>Info:</h3>
-<% if @restaurant.accepts_reservation%>
-   <p><%= link_to "Reservations", @restaurant.url %></p>
+  <% if @restaurant.accepts_reservation%>
+    <p><%= link_to "Reservations", @restaurant.url %></p>
   <% end %>
-<%= if @restaurant.onsite_parking %>
+  <% if @restaurant.onsite_parking %>
     <p><%= "Onsite Parking Available" %></p>
-    <% end %>
+  <% end %>
 
 <h3>Description:</h3>
-<p><%= @restaurant.description %></p>
+  <p><%= @restaurant.description %></p>
 
 <h3>Rating: , Price Range: $$$</h3>
 
+<%= link_to "Create a Review For This Restaurant", new_review_path%>
 <h3>Reviews:</h3>
-<p>Sort by:</p>
+  <p>Sort by:</p>
