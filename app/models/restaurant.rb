@@ -3,7 +3,9 @@ class Restaurant < ApplicationRecord
   has_many  :reviews
   has_many  :menu_items
   has_many  :users, through: :reviews
+
   has_many  :cuisines, through: :menu_items
+
   # validates :name, presence: true
   # validates :name, uniqueness: true
   # validates :phone, length: { is: 10}
