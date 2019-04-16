@@ -1,0 +1,9 @@
+<h1><%= @restaurant.name %></h1>
+<h2>Menu:</h2>
+
+<% @menu_items.each do |item| %>
+<li><%= item.name %>...<%= item.price%></li><br>
+<li><%= item.description %></li>
+<%end%>
+
+<%= link_to "Back to Restaurant", restaurant_path(@restaurant)%>

@@ -23,4 +23,10 @@ class Restaurant < ApplicationRecord
 
   def most_reviews
   end
+
+  def cuisines
+    Restaurant.all.map do |r|
+      r.cuisine
+    end.unique
+  end
 end

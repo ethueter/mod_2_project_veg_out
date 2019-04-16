@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @spotlight = @restaurants.sample
   end
 
   def new
@@ -9,15 +10,16 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new
+    @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
       render :new
-    end 
+    end
   end
 
   def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def edit
@@ -29,8 +31,16 @@ class RestaurantsController < ApplicationController
   def destroy
   end
 
+  def menu
+    @restaurant = Restaurant.find(params[:id])
+    @menu_items = MenuItem.select{|item| item.restaurant_id == @restaurant.id}
+  end
+
   private
 
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address, :phone, :owner_id, :url, :onsite_parking, :accepts_reservation, :description)
+  end
 
 
 end
