@@ -6,8 +6,8 @@
     <%=f.label :title%><br>
     <%=f.text_field :title%><br>
     <br>
-    # <%=f.label :rating%><br>
-    # <%=collection_radio_buttons(:review, :rating, [1..5], :rating, [1..5])%><br>
+    <%=f.label :rating%><br>
+    <%=f.select :rating, [1..5]%><br>
     <br>
     <%=f.label :price_range%><br>
     <%=f.text_field :price_range%><br>
