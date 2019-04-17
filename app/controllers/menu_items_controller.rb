@@ -5,6 +5,7 @@ class MenuItemsController < ApplicationController
   end
 
   def create
+    byebug
     @menu_item = MenuItem.new(menu_items_params)
     if @menu_item.save
       redirect_to menu_path(@restaurant)
@@ -19,6 +20,7 @@ class MenuItemsController < ApplicationController
   private
 
   def menu_items_params
-    params.require(:menu_items).permit(:restaurant_id, :user_id, :name, :price, :description, :cuisine_id)
+
+    params.require(:menu_item).permit(:restaurant_id, :user_id, :name, :price, :description, :cuisine_id)
   end
 end

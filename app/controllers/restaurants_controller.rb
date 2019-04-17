@@ -36,6 +36,13 @@ class RestaurantsController < ApplicationController
     @menu_items = MenuItem.select{|item| item.restaurant_id == @restaurant.id}
   end
 
+  def add_menu_items
+    @restaurant = Restaurant.find(params[:id])
+    @menu_item = MenuItem.new
+  end
+
+  
+
   private
 
   def restaurant_params
