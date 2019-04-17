@@ -4,9 +4,11 @@ class MenuItemsController < ApplicationController
     @menu_item = MenuItem.new
     @meal = meals
     @tag = tag
+    @current_user=current_user
   end
 
   def create
+    @current_user=current_user
     @menu_item = MenuItem.new(menu_items_params)
     if @menu_item.save
       redirect_to menu_path(@menu_item.restaurant_id)
@@ -17,33 +19,49 @@ class MenuItemsController < ApplicationController
 
   def show
     @menu_item = MenuItem.find(params[:id])
+    @current_user=current_user
+    @restaurant=MenuItem.find(params[:id]).restaurant
   end
 
   def edit
+    @current_user=current_user
     @menu_item = MenuItem.find(params[:id])
   end
 
   def update
     @menu_item = MenuItem.find(params[:id])
-    if @menu_item.update(menu_items_params)
-      redirect_to menu_path(@menu_item.restaurant_id)
+    @current_user=current_user
+    @restaurant = Restaurant.find(@menu_item.restaurant_id)
+    if  (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id)
+        if  @menu_item.update(menu_items_params)
+            redirect_to menu_path(@menu_item.restaurant_id)
+        else
+# flash[:edit_menu_fail]="There was an error while submitting your changes. Please try again."
+            render :edit
+        end
     else
-      render :edit
+# flash[:permissions_menu_fail]="You do not have permission to edit this item."
+        redirect_to menu_path(@menu_item.restaurant.id)
     end
   end
 
-
   def destroy
-    @item = MenuItem.find(params[:id])
-    @restaurant = Restaurant.find(@item.restaurant_id)
-    @item.destroy
-    redirect_to menu_path(@restaurant)
+    @current_user=current_user
+    @menu_item = MenuItem.find(params[:id])
+    @restaurant = Restaurant.find(@menu_item.restaurant_id)
+    if  (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id)
+        @menu_item.destroy
+# flash[:destroy_menu_success]="Menu item deleted."
+        redirect_to menu_path(@restaurant)
+    else
+# flash[:permissions_menu_fail]="You do not have permission to delete this restaurant."
+        redirect_to menu_path(@restaurant)
+    end
   end
 
   private
 
   def menu_items_params
-    
     params.require(:menu_item).permit(:restaurant_id, :user_id, :name, :price, :description, :cuisine_id, :meal, :tag)
   end
 end
