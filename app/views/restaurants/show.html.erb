@@ -21,7 +21,16 @@
 
 <%= link_to "Create a Review For This Restaurant", review_restaurant_path(@restaurant)%>
 <h3>Reviews:</h3>
+
   <% @restaurant.reviews.each do |review| %>
   <li><%= review.title %>, by <%= review.user.full_name%> Rating: <%= review.rating %></li>
   <li><%= review.content %></li><br>
   <% end %>
+
+  <p>Sort by:</p>
+
+<% if @current_user.id == @restaurant.owner_id %>
+  <%=link_to 'Edit This Restaurant', edit_restaurant_path(@restaurant)%>
+  <%=button_to 'Delete This Restaurant', restaurant_path(@restaurant), :method => :delete%>
+<%end%>
+

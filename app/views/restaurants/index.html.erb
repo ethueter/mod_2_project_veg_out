@@ -24,6 +24,11 @@
 
 
 <p>Most Recent Review:</p>
+
 <p><%= @most_recent_review.restaurant.name %> by <%= @most_recent_review.user.username %></p>
 <p><%= @most_recent_review.rating%>/5</p>
 <p><%= @most_recent_review.content%></p>
+
+
+<h4>Own a restaurant? <%=button_to 'Add it here!', new_restaurant_path, method: :get%></h4>
+
