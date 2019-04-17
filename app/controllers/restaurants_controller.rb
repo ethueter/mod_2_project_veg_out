@@ -3,6 +3,8 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     @spotlight = @restaurants.sample
+    @top_rated = @restaurants.select{|x| x.avgrating(x) == 5}.sample(3)
+    @most_recent_review = Review.all.order("created_at").last
   end
 
   def by_cuisine
@@ -27,6 +29,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @avgrating = @restaurant.avgrating(@restaurant)
     @current_user=current_user
   end
 

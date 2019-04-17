@@ -34,14 +34,14 @@ end
   )
 end
 
-30.times do
+60.times do
   Review.create!(
     user_id:  User.all.sample.id,
     restaurant_id: Restaurant.all.sample.id,
     title:  Faker::Hipster.sentence,
     content:  Faker::Hipster.paragraph,
     rating: Faker::Number.between(1,5),
-    price_range:  Faker::Hipster.word,
+    price_range:  ['$', '$$', '$$$', '$$$$'].sample,
     favorite_dish:  Faker::Hipster.word
   )
 end
