@@ -51,7 +51,7 @@ end
     restaurant_id: Restaurant.all.sample.id,
     user_id:  User.all.sample.id,
     cuisine_id: Cuisine.all.sample.id,
-    name: Faker::Hipster.words(2),
+    name: Faker::Hipster.word,
     price:  Faker::Number.decimal(2, 2),
     description:  Faker::Hipster.sentence
   )
