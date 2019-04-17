@@ -10,7 +10,7 @@
     <%=f.select :rating, options_for_select([1, 2, 3, 4, 5])%><br>
     <br>
     <%=f.label :price_range%><br>
-    <%=f.text_field :price_range%><br>
+    <%=f.select :price_range, options_for_select(['$', '$$', '$$$', '$$$$', '$$$$$'])%><br>
     <br>
     <%=f.label :content%><br>
     <%=f.text_area :content%><br>

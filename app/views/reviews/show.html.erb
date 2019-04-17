@@ -1,4 +1,4 @@
-<h4><%=@review.user.full_name%>'s Review of <%=@review.restaurant.name%></h4><br>
+<h4><%=@review.user.full_name%>'s Review of <%=link_to @review.restaurant.name, restaurant_path(@review.restaurant.id)%></h4><br>
 <br>
 <br>
 <h2><%=@review.title%></h2><br>
@@ -11,4 +11,5 @@
     
 <% if @current_user.id == @review.user_id %>
     <%=link_to 'Edit your post', edit_review_path(@review)%>
+    <%=button_to 'Delete this post', review_path(@review), :method => :delete%>
 <%end%>
