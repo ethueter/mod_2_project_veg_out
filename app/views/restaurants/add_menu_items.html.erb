@@ -5,11 +5,14 @@
 <%= f.hidden_field :restaurant_id, :value => @restaurant.id%>
 <%= f.hidden_field:user_id, :value => @user_id %>
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name %><br>
 <%= f.label :price %>
-<%= f.text_field :price %>
+<%= f.text_field :price %><br>
 <%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: true) %>
+<%= f.text_field :description %><br>
+<%= f.select :meal, "<option>Breakfast</option><option>Lunch</option><option>Dinner</option>".html_safe%><br>
+<%= f.label :cuisine %><br>
+<%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: true) %><br>
+<%= f.select :tag, "<option>Vegetarian</option><option>Vegan</option><option>Gluten Free</option><option>Includes Meat</option><option>Meat Optional</option>".html_safe %><br>
 <%= f.submit %>
 <% end %>
