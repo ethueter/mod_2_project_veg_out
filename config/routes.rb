@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get   '/logout' => 'sessions#destroy'
   resources :restaurants
   get '/restaurants/:id/menu', to: 'restaurants#menu', as: '/menu'
+  get '/restaurants/:id/add_menu_items', to: 'restaurants#add_menu_items', as: '/add_menu_item'
+
   resources :menu_items, only: [:new, :create, :show, :edit, :update, :delete]
 
 

@@ -16,5 +16,5 @@
     <%end%>
     </tr>
 </table>
-<%= link_to "Add to the Menu", menu_items_path(restaurant_id: @restaurant.id), method=> :post %><br>
+<%= link_to "Add to the Menu", add_menu_item_path(@restaurant)%><br>
 <%= link_to "Back to Restaurant", restaurant_path(@restaurant)%>
