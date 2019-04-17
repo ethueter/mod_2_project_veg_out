@@ -1,14 +1,14 @@
-<h1><%=@review.user.full_name%>'s Review of <%=@review.restaurant.name%></h1><br>
+<h4><%=@review.user.full_name%>'s Review of <%=@review.restaurant.name%></h4><br>
 <br>
 <br>
-<h3><%=@review.title%></h3><br>
-<br>
-    <h3><%=@review.rating%>/5</h3><br>
-<br>
-    <h4><%=@review.price_range%></h4><br>
-<br>
-    <p><%=@review.content%></p><br>
-<br>
-    <h3>My Favorite Dish at <%=@review.restaurant.name%>:</h3><br>
-    <h3><%=@review.favorite_dish%></h3>
+<h2><%=@review.title%></h2><br>
+    <ul><%=@review.rating%>/5</ul>
+    <ul><%=@review.price_range%></ul>
+    <p><%=@review.content%></p>
+    <br>
+    <ul>My Favorite Dish at <%=@review.restaurant.name%>:</ul>
+    <ul><%=@review.favorite_dish%></ul>
     
+<% if @current_user.id == @review.user_id %>
+    <%=link_to 'Edit your post', edit_review_path(@review)%>
+<%end%>
