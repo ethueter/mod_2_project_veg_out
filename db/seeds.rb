@@ -29,7 +29,7 @@ end
 
 15.times do
   Cuisine.create(
-    name: Faker::Restaurant.type.unique,
+    name: Faker::Restaurant.type,
     description:  Faker::Lorem.sentence
   )
 end
