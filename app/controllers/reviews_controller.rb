@@ -42,7 +42,7 @@ flash[:update_review_fail]="There was an error while updating your review. Pleas
         @review.destroy
         redirect_to restaurant_path(params[:restaurant_id])
     end
-    
+
     private
 
     def review_params
