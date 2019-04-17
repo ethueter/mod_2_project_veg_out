@@ -5,6 +5,13 @@ class RestaurantsController < ApplicationController
     @spotlight = @restaurants.sample
   end
 
+  def by_cuisine
+
+    @cuisine = Cuisine.find_by(name: params[:cuisine])
+    @restaurants = Restaurant.select{|r| r.cuisines.map{|c| c.id}.include?(@cuisine.id) }
+    #redirect_to by_cuisine_path
+  end
+
   def new
     @restaurant = Restaurant.new
   end
@@ -40,9 +47,7 @@ class RestaurantsController < ApplicationController
     @user_id = current_user.id
   end
 
-  def search_by_cuisine
-    @restaurants = Restaurant.select{|r| r.cuisines.map{|c| c.id}.include?(params[:id]) }
-  end
+
 
 
   private
