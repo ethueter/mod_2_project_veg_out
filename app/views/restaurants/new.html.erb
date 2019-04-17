@@ -2,9 +2,9 @@
 <p>Only restaurant owners can submit new restaurants to be added to Veg-Out. Once you have submitted your restaurant you will be contacted by our staff to confirm that you are the owner. All listing will be marked as pending untill verified.</p>
 
 <% if @restaurant.errors.any? %>
-<% @restaurant.errors.full_messages.each do |m| %>
-<li><%= m %></li>
-<% end %>
+    <% @restaurant.errors.full_messages.each do |m| %>
+    <li><%= m %></li>
+    <% end %>
 <%end%>
 
 
