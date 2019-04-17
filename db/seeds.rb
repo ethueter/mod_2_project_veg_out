@@ -29,7 +29,7 @@ end
 
 15.times do
   Cuisine.create(
-    name: Faker::Restaurant.type,
+    name: Faker::Restaurant.type.unique,
     description:  Faker::Lorem.sentence
   )
 end
@@ -46,13 +46,15 @@ end
   )
 end
 
-30.times do
+100.times do
   MenuItem.create(
     restaurant_id: Restaurant.all.sample.id,
     user_id:  User.all.sample.id,
     cuisine_id: Cuisine.all.sample.id,
     name: Faker::Hipster.word,
     price:  Faker::Number.decimal(2, 2),
-    description:  Faker::Hipster.sentence
+    description:  Faker::Hipster.sentence,
+    tag:  ["Vegetarian", "Vegan", "Gluten Free", " "].sample,
+    meal: ["Breakfast", "Lunch", "Dinner"].sample
   )
 end

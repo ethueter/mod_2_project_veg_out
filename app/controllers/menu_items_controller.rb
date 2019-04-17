@@ -2,6 +2,8 @@ class MenuItemsController < ApplicationController
 
   def new
     @menu_item = MenuItem.new
+    @meal = meals
+    @tag = tag
   end
 
   def create
@@ -28,7 +30,7 @@ class MenuItemsController < ApplicationController
     else
       render :edit
     end
-  end 
+  end
 
 
   def destroy
@@ -41,7 +43,7 @@ class MenuItemsController < ApplicationController
   private
 
   def menu_items_params
-
-    params.require(:menu_item).permit(:restaurant_id, :user_id, :name, :price, :description, :cuisine_id)
+    
+    params.require(:menu_item).permit(:restaurant_id, :user_id, :name, :price, :description, :cuisine_id, :meal, :tag)
   end
 end
