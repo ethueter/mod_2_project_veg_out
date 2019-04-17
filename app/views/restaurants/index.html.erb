@@ -14,6 +14,16 @@
 
 
 <p>Highest Rated:</p>
+<ul>
+  <% @top_rated.each do |restaurant| %>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>
+    <% end %>
+</ul>
+
+
 
 
 <p>Most Recent Review:</p>
+<p><%= @most_recent_review.restaurant.name %> by <%= @most_recent_review.user.username %></p>
+<p><%= @most_recent_review.rating%>/5</p>
+<p><%= @most_recent_review.content%></p>

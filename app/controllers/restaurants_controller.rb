@@ -3,13 +3,13 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     @spotlight = @restaurants.sample
+    @top_rated = @restaurants.select{|x| x.avgrating(x) == 5}.sample(3)
+    @most_recent_review = Review.all.order("created_at").last
   end
 
   def by_cuisine
-
     @cuisine = Cuisine.find_by(name: params[:cuisine])
     @restaurants = Restaurant.select{|r| r.cuisines.map{|c| c.id}.include?(@cuisine.id) }
-    #redirect_to by_cuisine_path
   end
 
   def new
@@ -27,6 +27,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @avgrating = @restaurant.avgrating(@restaurant)
   end
 
   def edit
