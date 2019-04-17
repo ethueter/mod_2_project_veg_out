@@ -1,10 +1,13 @@
 class ReviewsController < ApplicationController
     def show
         @review=Review.find(params[:id])
+        @current_user=current_user
     end
 
     def new
         @review=Review.new
+        @restaurant=Restaurant.find(params[:id])
+        @current_user=current_user
     end
 
     def create
@@ -20,6 +23,7 @@ flash[:create_review_fail]="Your review could not be submitted. Please check tha
 
     def edit
         @review=Review.find(params[:id])
+        @restaurant=Review.find(params[:id]).restaurant
     end
 
     def update
@@ -42,6 +46,6 @@ flash[:update_review_fail]="There was an error while updating your review. Pleas
     private
 
     def review_params
-        params.require(:reviews).permit(:user_id, :restaurant_id, :title, :rating, :price_range, :favorite_dish)
+        params.require(:review).permit(:user_id, :restaurant_id, :title, :rating, :price_range, :favorite_dish)
     end
 end
