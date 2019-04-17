@@ -8,9 +8,10 @@
     <th>Description:</th>
     <th>Price:</th>
   </tr>
-  <tr>
+
     <% @menu_items.each do |item| %>
-    <th><%= item.name %></th>
+    <tr>
+    <th><%= link_to item.name, menu_item_path(item) %></th>
     <th><%= item.description %></th>
     <th><%= item.price %></th>
     <%end%>

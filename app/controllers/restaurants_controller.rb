@@ -28,8 +28,6 @@ class RestaurantsController < ApplicationController
   def update
   end
 
-  def destroy
-  end
 
   def menu
     @restaurant = Restaurant.find(params[:id])
@@ -39,9 +37,10 @@ class RestaurantsController < ApplicationController
   def add_menu_items
     @restaurant = Restaurant.find(params[:id])
     @menu_item = MenuItem.new
+    @user_id = current_user.id
   end
 
-  
+
 
   private
 

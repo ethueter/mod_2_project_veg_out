@@ -1,0 +1,13 @@
+
+
+<h2><%= @menu_item.name %></h2>
+<h3>$<%= @menu_item.price %></h3>
+
+<p>Description:</p><br>
+<p><%= @menu_item.description%></p>
+
+<%= button_to('Update', edit_menu_item_path(@menu_item),
+          method: "get") %>
+
+<%= button_to('Remove from Menu', menu_item_path(@menu_item),
+          method: "delete", remote: true, data: { confirm: 'Are you sure?'}) %>
