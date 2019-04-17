@@ -15,8 +15,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-flash[:create_user_fail]="New user information invalid. Please re-enter."
-            render :new_user_path
+# flash[:create_user_fail]="New user information invalid. Please re-enter."
+            redirect_to new_user_path
         end
     end
 
@@ -27,10 +27,10 @@ flash[:create_user_fail]="New user information invalid. Please re-enter."
     def update
         @user=User.find(params[:id])
         if  @user.update(user_params)
-flash[:update_user_success]="Your profile has been successfully updated."
+# flash[:update_user_success]="Your profile has been successfully updated."
             redirect_to user_path(@user)
         else
-flash[:update_user_fail]="There was a problem while updating your profile. Please try again."
+# flash[:update_user_fail]="There was a problem while updating your profile. Please try again."
             redirect_to edit_user_path(@user)
         end
     end
