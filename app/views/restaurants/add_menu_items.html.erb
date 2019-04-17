@@ -3,7 +3,7 @@
 
 <%= form_for @menu_item do |f| %>
 <%= f.hidden_field :restaurant_id, :value => @restaurant.id%>
-<%= f.hidden_field:user_id, :value => current_user %>
+<%= f.hidden_field:user_id, :value => @user_id %>
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= f.label :price %>
