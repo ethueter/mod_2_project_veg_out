@@ -1,16 +1,26 @@
-<div class="container">
-  <h1 class="title is-size-1; has-text-centered">VegOut</h1>
-  <h3 class="subtitle is-size-4; has-text-centered">A community for vegetarians to find and review local restaurants </h3>
+<section class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        VegOut
+      </h1>
+      <h2 class="subtitle has-text-centered">
+        A community for vegetarians to find and review local restaurants.
+      </h2>
+    </div>
+  </div>
+</section><br>
 
   <h2 class="title is-size-5">Restaurant Spotlight</h2>
   <%= link_to @spotlight.name, restaurant_path(@spotlight) %>
+  <br>
 
   <h2 class="title is-size-5">Looking for a new spot?</h2>
   <%= form_tag(by_cuisine_path, method: :get) do %>
     <%= label_tag(:cuisine, "Search by cuisine:") %>
     <%= select_tag :cuisine, options_for_select(Cuisine.all.map{|c| c.name}.uniq.sort) %>
     <%= submit_tag("Search") %>
-  <% end %>
+  <% end %><br>
 
 
 
@@ -19,17 +29,24 @@
     <% @top_rated.each do |restaurant| %>
       <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>
       <% end %>
-  </ul>
+  </ul><br>
 
 
 
 
   <p class="title is-size-5">Most Recent Review:</p>
 
-  <p><%= @most_recent_review.restaurant.name %> by <%= @most_recent_review.user.username %></p>
-  <p><%= @most_recent_review.rating%>/5</p>
-  <p><%= @most_recent_review.content%></p>
+  <p>Restaurant: <%= link_to @most_recent_review.restaurant.name, restaurant_path(@most_recent_review.restaurant) %> by <%= @most_recent_review.user.username %></p>
+  <p>Rating: <% @most_recent_review.rating.times do%>
+    <i class="fas fa-star"></i>
+    <%end%>
+    <% (5-@most_recent_review.rating).times do %>
+    <i class="far fa-star"></i>
+    <%end%>
+  </p>
+  <p><%= @most_recent_review.content%></p><br>
 
 
-  <h4 class="title is-size-6">Own a restaurant?</h4> <%=button_to 'Add it here!', new_restaurant_path, method: :get%>
+  <h4 class="title is-size-6">Own a restaurant?</h4>
+  <button class="button is-success"><%=button_to 'Add it here!', new_restaurant_path, method: :get%></button>
 </div>

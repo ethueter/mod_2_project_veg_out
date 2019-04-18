@@ -1,0 +1,35 @@
+<article class="media">
+  <figure class="media-left">
+    <p>
+      <% if @review.rating == 1%>
+        <i class="far fa-angry is-size-3"></i>
+        <%elsif @review.rating == 2%>
+        <i class="far fa-frown is-size-3"></i>
+        <%elsif @review.rating == 3%>
+        <i class="far fa-meh is-size-3"></i>
+        <%elsif @review.rating == 4%>
+        <i class="far fa-smile-beam is-size-3"></i>
+        <%else%>
+        <i class="far fa-grin-stars is-size-3"></i>
+      <%end%>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%=@review.title%></strong> by <small><%= @review.user.username %></small>
+        <br>
+        <%= @review.content %>
+      </p>
+    </div>
+  </div>
+  <div class="media-right">
+    <p> Rating: <% @review.rating.times do%>
+      <i class="fas fa-star"></i>
+      <%end%>
+      <% (5-@review.rating).times do %>
+      <i class="far fa-star"></i>
+      <%end%>
+    </p>
+  </div>
+</article>
