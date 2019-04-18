@@ -54,7 +54,7 @@
 
 
 
-<% if @current_user.id == @restaurant.owner_id %>
+<% if session[:user_id] == @restaurant.owner_id %>
   <%=link_to 'Edit This Restaurant', edit_restaurant_path(@restaurant)%>
   <%=button_to 'Delete This Restaurant', restaurant_path(@restaurant), :method => :delete%>
 <%end%>
