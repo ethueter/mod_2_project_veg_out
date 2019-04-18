@@ -1,31 +1,55 @@
-<h1><%= @restaurant.name %></h1>
+<section class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        <%= @restaurant.name %>
+      </h1>
+    </div>
+  </div>
+</section><br>
 
-<h3>Contact info:</h3>
-  <p><%= @restaurant.phone %> <%= @restaurant.address %></p>
+<article class="media">
+  <figure class="media-left">
+    <p>
+      <i class="fas fa-phone"></i>
+      <%= @restaurant.phone %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>Description</strong> <strong><%= link_to "Menu", menu_path(@restaurant) %></strong>
+        <br>
+        <%= @restaurant.description %>
+      </p>
+    </div>
+  </div>
+  <div class="media-right">
+    <h3>Info:</h3>
+    <p>Avg Rating: <% @avgrating.times do%>
+      <i class="fas fa-star"></i>
+      <%end%>
+      <% (5-@avgrating).times do %>
+      <i class="far fa-star"></i>
+      <%end%>
+    </p>
+      <p><% if @restaurant.accepts_reservation%>
+        <%= link_to "Reservations", @restaurant.url %>
+      <% end %>
+      <% if @restaurant.onsite_parking %>
+        <%= "Onsite Parking Available" %>
+      <% end %></p>
+  </div>
+</article><br>
 
-<h3>Info:</h3>
-<i class="fas fa-seedling"></i>
-  <p><% if @restaurant.accepts_reservation%>
-    <%= link_to "Reservations", @restaurant.url %>
-  <% end %>
+<%= link_to "Create a Review For This Restaurant", review_restaurant_path(@restaurant)%><br>
 
-  <% if @restaurant.onsite_parking %>
-    <%= "Onsite Parking Available" %>
-  <% end %></p>
+<h3 class="title is-size-5">Reviews:</h3>
 
-  <%= link_to "Menu", menu_path(@restaurant) %>
-
-<h3>Description:</h3>
-  <p><%= @restaurant.description %></p>
-
-<h3>Rating: <%= @avgrating%>/5</h3>
-
-<%= link_to "Create a Review For This Restaurant", review_restaurant_path(@restaurant)%>
-<h3>Reviews:</h3>
 
   <% @restaurant.reviews.each do |review| %>
-  <li><%= review.title %>, by <%= review.user.full_name%> Rating: <%= review.rating %></li>
-  <li><%= review.content %></li><br>
+    <%@review = review%>
+    <%= render "restaurants/reviews" %>
   <% end %>
 
 

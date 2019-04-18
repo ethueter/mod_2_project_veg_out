@@ -12,7 +12,13 @@
 <h3 class="title is-size-4">Most Recent Review:</h3>
   <%if @most_recent_review != nil %>
   <p>Restaurant: <%= @most_recent_review.restaurant.name%></p>
-  <p><%= @most_recent_review.title %>, Rating:<%= @most_recent_review.rating %>/5</p><br>
+  <p><%= @most_recent_review.title %>, Rating: <% @most_recent_review.rating.times do%>
+    <i class="fas fa-star"></i>
+    <%end%>
+    <% (5-@most_recent_review.rating).times do %>
+    <i class="far fa-star"></i>
+    <%end%>
+  </p><br>
   <p><%= @most_recent_review.content%></p>
   <%else%>
   <p>No Reviews Yet!</p>
