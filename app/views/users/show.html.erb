@@ -1,9 +1,24 @@
-<h1><%=@user.username%></h1>
 
+<h1 class="title is-size-2"> Welcome Back <%=@user.first_name%></h1>
+
+
+
+<h3 class="title is-size-4">Profile info:</h3>
 <ul>Name: <%= @user.full_name %><br>
     Email: <%= @user.email %><br>
-    Account Created: <%= @user.created_at %><br>
-    Last Updated: <%= @user.updated_at %><br>
-</ul>
+    Member Since: <%= @user.created_at %><br>
+</ul><br>
+
+<h3 class="title is-size-4">Most Recent Review:</h3>
+  <%if @most_recent_review != nil %>
+  <p>Restaurant: <%= @most_recent_review.restaurant.name%></p>
+  <p><%= @most_recent_review.title %>, Rating:<%= @most_recent_review.rating %>/5</p><br>
+  <p><%= @most_recent_review.content%></p>
+  <%else%>
+  <p>No Reviews Yet!</p>
+  <%end%><br>
+
+
+
 
 <h4><%=link_to 'View homepage', restaurants_path%></h4>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
     def show
         @user=User.find(params[:id])
+        @most_recent_review = Review.select{|r| r.user_id == @user.id}.sort.last
     end
 
     def new

@@ -4,23 +4,32 @@
     <title>VegOut</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
+https://b9p3b5u6.stackpathcdn.com/wp-content/uploads/2018/12/fruits-and-veggies.jpg
 
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-
-      <div id="navbarBasicExample" class="navbar-menu">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <%= link_to("Login", login_path, class: 'navbar-item')%>
         <%= link_to("Home", restaurants_path, class: 'navbar-item')%>
+        <%= link_to("Review", reviews_path, class: 'navbar-item')%>
 
-      </div>
     </nav>
       <div class="container">
-        <%= yield %>
+            <%= yield %>
       </div>
   </body>
+  <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>VegOut</strong> by Travis Martin & Tyler Hueter
+    </p>
+  </div>
+</footer>
 </html>

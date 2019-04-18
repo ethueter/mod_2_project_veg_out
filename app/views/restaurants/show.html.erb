@@ -4,13 +4,14 @@
   <p><%= @restaurant.phone %> <%= @restaurant.address %></p>
 
 <h3>Info:</h3>
-  <% if @restaurant.accepts_reservation%>
-    <p><%= link_to "Reservations", @restaurant.url %></p>
+<i class="fas fa-seedling"></i>
+  <p><% if @restaurant.accepts_reservation%>
+    <%= link_to "Reservations", @restaurant.url %>
   <% end %>
 
   <% if @restaurant.onsite_parking %>
-    <p><%= "Onsite Parking Available" %></p>
-  <% end %>
+    <%= "Onsite Parking Available" %>
+  <% end %></p>
 
   <%= link_to "Menu", menu_path(@restaurant) %>
 
@@ -27,10 +28,9 @@
   <li><%= review.content %></li><br>
   <% end %>
 
-  <p>Sort by:</p>
+
 
 <% if @current_user.id == @restaurant.owner_id %>
   <%=link_to 'Edit This Restaurant', edit_restaurant_path(@restaurant)%>
   <%=button_to 'Delete This Restaurant', restaurant_path(@restaurant), :method => :delete%>
 <%end%>
-
