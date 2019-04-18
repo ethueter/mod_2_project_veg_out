@@ -1,34 +1,35 @@
-<h1>Welcome to Veg-Out</h1>
-<h3>A community for vegetarians to find and review local restaurants </h3>
+<div class="container">
+  <h1>Welcome to Veg-Out</h1>
+  <h3>A community for vegetarians to find and review local restaurants </h3>
 
-<h2>Restaurant Spotlight</h2>
-<%= link_to @spotlight.name, restaurant_path(@spotlight) %>
-
-
-<%= form_tag(by_cuisine_path, method: :get) do %>
-  <%= label_tag(:cuisine, "Search by cuisine:") %>
-  <%= select_tag :cuisine, options_for_select(Cuisine.all.map{|c| c.name}.uniq.sort) %>
-  <%= submit_tag("Search") %>
-<% end %>
+  <h2>Restaurant Spotlight</h2>
+  <%= link_to @spotlight.name, restaurant_path(@spotlight) %>
 
 
-
-<p>Highest Rated:</p>
-<ul>
-  <% @top_rated.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>
-    <% end %>
-</ul>
+  <%= form_tag(by_cuisine_path, method: :get) do %>
+    <%= label_tag(:cuisine, "Search by cuisine:") %>
+    <%= select_tag :cuisine, options_for_select(Cuisine.all.map{|c| c.name}.uniq.sort) %>
+    <%= submit_tag("Search") %>
+  <% end %>
 
 
 
+  <p>Highest Rated:</p>
+  <ul>
+    <% @top_rated.each do |restaurant| %>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>
+      <% end %>
+  </ul>
 
-<p>Most Recent Review:</p>
-
-<p><%= @most_recent_review.restaurant.name %> by <%= @most_recent_review.user.username %></p>
-<p><%= @most_recent_review.rating%>/5</p>
-<p><%= @most_recent_review.content%></p>
 
 
-<h4>Own a restaurant? <%=button_to 'Add it here!', new_restaurant_path, method: :get%></h4>
 
+  <p>Most Recent Review:</p>
+
+  <p><%= @most_recent_review.restaurant.name %> by <%= @most_recent_review.user.username %></p>
+  <p><%= @most_recent_review.rating%>/5</p>
+  <p><%= @most_recent_review.content%></p>
+
+
+  <h4>Own a restaurant? <%=button_to 'Add it here!', new_restaurant_path, method: :get%></h4>
+</div>

@@ -25,7 +25,7 @@ class Restaurant < ApplicationRecord
       @avgrating
     else
       @avgrating = 0
-    end 
+    end
   end
 
 
@@ -33,10 +33,8 @@ class Restaurant < ApplicationRecord
   def price_range
   end
 
-  def most_popular_dish
-  end
-
-  def most_reviews
+  def veggie_rating(restaurant)
+      restaurant.menu_items.select{|i| i.tag == "Vegetarian"    ||   i.tag == "Vegan"}.count/restaurant.menu_items.count.to_f*100
   end
 
 

@@ -14,5 +14,7 @@
 <%= f.label :cuisine %><br>
 <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: true) %><br>
 <%= f.select :tag, "<option>Vegetarian</option><option>Vegan</option><option>Gluten Free</option><option>Includes Meat</option><option>Meat Optional</option>".html_safe %><br>
+<button class="button">
 <%= f.submit %>
+</button>
 <% end %>
