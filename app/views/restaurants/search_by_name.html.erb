@@ -1,0 +1,12 @@
+<% if @results.length > 0 %>
+    <h3>Found <%=@results.length%> Results Matching <%=@search%></h3><br>
+    <% @results.each do |r| %>
+        <ul><%=link_to r.name, restaurant_path(r)%></ul>
+    <% end %>
+<% else %>
+    <h3>It looks like we don't know any restaurants that match <%=@search%>.</h3><br>
+        <%=form_tag(search_restaurant_name_path) do%>
+            <p>Try again!</p> <%=text_field_tag :search_name%><br>
+            <%=submit_tag 'Search'%>
+        <% end %>
+<% end %>

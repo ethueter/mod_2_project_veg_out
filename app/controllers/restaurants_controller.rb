@@ -79,6 +79,11 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def search_by_name
+    @search=(params[:search_name])
+    @results=Restaurant.search_name(params[:search_name])
+  end
+
   private
 
   def restaurant_params
