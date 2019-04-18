@@ -12,10 +12,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-https://b9p3b5u6.stackpathcdn.com/wp-content/uploads/2018/12/fruits-and-veggies.jpg
+
 
   <body>
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+    <a class="navbar-item" href="/restaurants">
+      VegOut
+    </a>
+    </div>
         <%= link_to("Login", login_path, class: 'navbar-item')%>
         <%= link_to("Home", restaurants_path, class: 'navbar-item')%>
         <%= link_to("Review", reviews_path, class: 'navbar-item')%>

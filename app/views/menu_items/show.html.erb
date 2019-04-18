@@ -1,10 +1,25 @@
-
-
-<h2><%= @menu_item.name %></h2>
-<h3>$<%= @menu_item.price %></h3>
-
-<p>Description:</p><br>
-<p><%= @menu_item.description%></p>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title is-size-3">
+      <%= @menu_item.name %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p class="item has-text-weight-bold">Description:</p><br>
+      <p><%= @menu_item.description%></p>
+      <br>
+      <h3 class="item has-text-centered">$<%= @menu_item.price %> <%=@menu_item.tag%></h3>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item"><%=link_to "Menu", menu_path(@menu_item.restaurant)%></p>
+    <% if (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id) %>
+        <p class="card-footer-item"><%= link_to "Edit", edit_menu_item_path(@menu_item) %></p>
+        <p class="card-footer-item"><%= button_to('Remove from Menu', menu_item_path(@menu_item), method: "delete", remote: true, data: { confirm: 'Are you sure?'}) %></p>
+    <%end%>
+  </footer>
+</div>
 
 <% if (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id) %>
     <%= button_to('Update', edit_menu_item_path(@menu_item), method: "get") %>
