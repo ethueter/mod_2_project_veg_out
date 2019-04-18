@@ -12,15 +12,46 @@
   <%= form_for @menu_item do |f| %>
   <%= f.hidden_field :restaurant_id, :value => @restaurant.id%>
   <%= f.hidden_field:user_id, :value => @user_id %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :price %>
-  <%= f.text_field :price %><br>
-  <%= f.label :description %>
-  <%= f.text_field :description %><br>
-  <%= f.select :meal, "<option>Breakfast</option><option>Lunch</option><option>Dinner</option>".html_safe%><br>
-  <%= f.label :cuisine %><br>
-  <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: true) %><br>
-  <%= f.select :tag, "<option>Vegetarian</option><option>Vegan</option><option>Gluten Free</option><option>Includes Meat</option><option>Meat Optional</option>".html_safe %><br>
-  <a class="button"><%= f.submit %></a>
+  <div class="field">
+    <%= f.label :name %>
+      <div class="control">
+        <%= f.text_field :name %>
+      </div>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+      <div class="control">
+        <%= f.text_field :price %>
+      </div>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <div class="control">
+      <%= f.text_field :description %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :meal %>
+      <div class="control">
+        <div class="select">
+          <%= f.select :meal, "<option>Breakfast</option><option>Lunch</option><option>Dinner</option>".html_safe%>
+        </div>
+      </div>
+  </div>
+  <div class="field">
+    <%= f.label :cuisine %>
+      <div class="control">
+        <div class="select">
+          <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: true) %>
+        </div>
+      </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <div class="select">
+        <%= f.select :tag, "<option>Vegetarian</option><option>Vegan</option><option>Gluten Free</option><option>Includes Meat</option><option>Meat Optional</option>".html_safe %>
+      </div>
+    </div>
+  </div>
+  <a class="button is-success"><%= f.submit %></a>
   <% end %>
