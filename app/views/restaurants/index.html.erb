@@ -22,6 +22,11 @@
     <%= submit_tag("Search") %>
   <% end %><br>
 
+    <h2>Search restaurants by name:</h2>
+    <%=form_tag(search_restaurant_name_path) do%>
+      <%=text_field_tag :search_name%><br>
+      <%=submit_tag 'Search'%>
+    <% end %>
 
 
   <p class="title is-size-5">Highest Rated:</p>

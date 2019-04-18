@@ -37,5 +37,8 @@ class Restaurant < ApplicationRecord
       restaurant.menu_items.select{|i| i.tag == "Vegetarian"    ||   i.tag == "Vegan"}.count/restaurant.menu_items.count.to_f*100
   end
 
+  def self.search_name(input)
+    results=Restaurant.where('lower(name) like ?', "%#{input}%".downcase)
+  end
 
 end
