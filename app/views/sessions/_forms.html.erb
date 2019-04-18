@@ -1,15 +1,25 @@
     <% if flash[:login_fail] %>
         <%= flash[:login_fail] %>
     <%end%>
-    
+
     <%=form_tag '/login' do%>
-        <%=label_tag :user_name%><br>
-        <%=text_field_tag :user_name%><br>
-        <br>
-        <%=label_tag :password%><br>
-        <%=password_field_tag :password%><br>
-        <br>
-        <%=submit_tag "Submit"%>
+    <div class="field">
+      <label class="label"><%=label_tag :user_name%></label>
+        <div class="control">
+          <%=text_field_tag :user_name%>
+        </div>
+    </div>
+    <div class="field">
+      <label class="label"><%=label_tag :password%></label>
+      <div class="control">
+        <%=password_field_tag :password%>
+      </div>
+    </div>
+    <div class="control">
+        <button class="button is-primary"><%=submit_tag "Login"%></button>
+    </div>
     <%end%>
 
-    <h3>Don't have an account yet? <%=link_to 'Sign up!', new_user_path%></h3>
+    <h3>Don't have an account yet?</h3>
+    <h3>Sign up today to be able to leave reviews and edit menus!</h3>
+    <%=link_to 'Create Account', new_user_path%>

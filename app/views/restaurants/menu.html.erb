@@ -1,53 +1,69 @@
-<h1><%= @restaurant.name %></h1>
-<h2>Menu:</h2>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= @restaurant.name %>
+      </h1>
+      <h2 class="subtitle">
+        Menu
+      </h2>
+    </div>
+  </div>
+</section>
+
+
 
 
 <table style="width:80%">
-  <tr>
-    <th>Menu Item:</th>
-    <th>Description:</th>
-    <th>Price:</th>
-    <th>Specialty:</th>
-  </tr>
-  <tr>
-    <th>Breakfast</th>
-  </tr>
-    <% @menu_items.each do |item| %>
-    <% if item.meal == "Breakfast" %>
+  <thead>
     <tr>
-    <th><%= link_to item.name, menu_item_path(item) %></th>
-    <th><%= item.description %></th>
-    <th><%= item.price %></th>
-    <th><%= item.tag %></th>
-    <%end%>
-    <%end%>
-  </tr>
-  <tr>
-    <th>Lunch</th>
-  </tr>
-    <% @menu_items.each do |item| %>
-    <% if item.meal == "Lunch" %>
+      <th>Menu Item:</th>
+      <th style="text-align: center">Description:</th>
+      <th>Price:</th>
+      <th>Specialty:</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
-    <th><%= link_to item.name, menu_item_path(item) %></th>
-    <th><%= item.description %></th>
-    <th><%= item.price %></th>
-    <th><%= item.tag %></th>
-    <%end%>
-    <%end%>
-  </tr>
-  <tr>
-    <th>Dinner</th>
-  </tr>
-    <% @menu_items.each do |item| %>
-    <% if item.meal == "Dinner" %>
+      <th>Breakfast</th>
+    </tr>
+      <% @menu_items.each do |item| %>
+      <% if item.meal == "Breakfast" %>
+      <tr>
+      <th style="text-transform: capitalize"><%= link_to item.name, menu_item_path(item) %></th>
+      <th><%= item.description %></th>
+      <th><%= item.price %></th>
+      <th><%= item.tag %></th>
+      <%end%>
+      <%end%>
+    </tr>
     <tr>
-    <th><%= link_to item.name, menu_item_path(item) %></th>
-    <th><%= item.description %></th>
-    <th><%= item.price %></th>
-    <th><%= item.tag %></th>
-    <%end%>
-    <%end%>
-  </tr>
+      <th>Lunch</th>
+    </tr>
+      <% @menu_items.each do |item| %>
+      <% if item.meal == "Lunch" %>
+      <tr>
+      <th style="text-transform: capitalize"><%= link_to item.name, menu_item_path(item) %></th>
+      <th><%= item.description %></th>
+      <th><%= item.price %></th>
+      <th><%= item.tag %></th>
+      <%end%>
+      <%end%>
+    </tr>
+    <tr>
+      <th>Dinner</th>
+    </tr>
+      <% @menu_items.each do |item| %>
+      <% if item.meal == "Dinner" %>
+      <tr>
+      <th style="text-transform: capitalize"><%= link_to item.name, menu_item_path(item) %></th>
+      <th><%= item.description %></th>
+      <th><%= item.price %></th>
+      <th><%= item.tag %></th>
+      <%end%>
+      <%end%>
+    </tr>
+  </tbody>
 </table><br>
 <%= link_to "Add to the Menu", add_menu_item_path(@restaurant)%><br>
 <%= link_to "Back to Restaurant", restaurant_path(@restaurant)%>
