@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get   '/login'  => 'sessions#new'
   post  '/login'  => 'sessions#create'
   get   '/logout' => 'sessions#destroy'
-  post '/restaurants/search', to: 'restaurants#search_by_name', as: 'search_restaurant_name'
+  post  '/restaurants/search',  to: 'restaurants#search_by_name', as: 'search_restaurant_name'
+  get   '/restaurants/search',  to: 'restaurants#search_by_name'
   resources :restaurants
   get '/restaurants/:id/menu', to: 'restaurants#menu', as: 'menu'
   get '/restaurants/:id/add_menu_items', to: 'restaurants#add_menu_items', as: 'add_menu_item'

@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     end
 
     def new
+        logged_in?
         @review=Review.new
         @restaurant=Restaurant.find(params[:id])
         @current_user=current_user
@@ -16,7 +17,7 @@ class ReviewsController < ApplicationController
             @review.save
             redirect_to review_path(@review)
         else
-          flash[:failure]="Your review could not be submitted. Please check that all fields contain valid entries."
+flash[:failure]="Your review could not be submitted as entered. Please check that all fields contain valid entries."
             redirect_to edit_review_path(@review)
         end
     end
