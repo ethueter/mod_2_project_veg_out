@@ -14,12 +14,12 @@ Cuisine.destroy_all
   )
 end
 
-20.times do
+25.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     address:  Faker::Address.street_address,
-    phone:  Faker::PhoneNumber.phone_number,
-    owner_id: Faker::Number.between(1, 10),
+    phone:  Faker::Number.number(10),
+    owner_id: Faker::Number.between(1, 100),
     url: Faker::Internet.url,
     description:  Faker::Restaurant.description,
     onsite_parking: true,
@@ -27,34 +27,35 @@ end
   )
 end
 
-15.times do
+20.times do
   Cuisine.create(
-    name: Faker::Restaurant.type,
+    name: ["American", "Asian", "BBQ", "Burgers", "Bar", "Chinese", "Fast Food", "French", "German", "Indian", "Italian", "Japanese", "Jamacian", "Korean", "Mexican", "Middle Eastern", "Pizza", "Southern", "Spanish", "Tacos", "Tapas"
+    ].sample,
     description:  Faker::Lorem.sentence
   )
 end
 
-60.times do
-  Review.create!(
-    user_id:  User.all.sample.id,
-    restaurant_id: Restaurant.all.sample.id,
-    title:  Faker::Hipster.sentence,
-    content:  Faker::Hipster.paragraph,
-    rating: Faker::Number.between(1,5),
-    price_range:  ['$', '$$', '$$$', '$$$$'].sample,
-    favorite_dish:  Faker::Hipster.word
-  )
-end
-
-100.times do
+150.times do
   MenuItem.create(
     restaurant_id: Restaurant.all.sample.id,
     user_id:  User.all.sample.id,
     cuisine_id: Cuisine.all.sample.id,
-    name: Faker::Hipster.word,
-    price:  Faker::Number.decimal(2, 2),
-    description:  Faker::Hipster.sentence,
-    tag:  ["Vegetarian", "Vegan", "Gluten Free", " "].sample,
+    name: Faker::Food.dish,
+    price:  Faker::Number.within(5..40),
+    description:  Faker::Food.description,
+    tag:  ["Vegetarian", "Vegan", "Gluten Free", "Includes Meat", "Meat Optional"].sample,
     meal: ["Breakfast", "Lunch", "Dinner"].sample
+  )
+end
+
+200.times do
+  Review.create!(
+    user_id:  User.all.sample.id,
+    restaurant_id: Restaurant.all.sample.id,
+    title:  Faker::Hipster.sentence,
+    content:  Faker::Restaurant.review,
+    rating: Faker::Number.between(1,5),
+    price_range:  ['$', '$$', '$$$', '$$$$'].sample,
+    favorite_dish:  MenuItem.all.sample.name
   )
 end
