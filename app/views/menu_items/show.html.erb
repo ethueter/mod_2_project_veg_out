@@ -16,12 +16,7 @@
     <p class="card-footer-item"><%=link_to "Menu", menu_path(@menu_item.restaurant)%></p>
     <% if (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id) %>
         <p class="card-footer-item"><%= link_to "Edit", edit_menu_item_path(@menu_item) %></p>
-        <p class="card-footer-item"><%= button_to('Remove from Menu', menu_item_path(@menu_item), method: "delete", remote: true, data: { confirm: 'Are you sure?'}) %></p>
+        <p class="card-footer-item"><a class="delete"></a></p>
     <%end%>
   </footer>
 </div>
-
-<% if (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id) %>
-    <%= button_to('Update', edit_menu_item_path(@menu_item), method: "get") %>
-    <%= button_to('Remove from Menu', menu_item_path(@menu_item), method: "delete", remote: true, data: { confirm: 'Are you sure?'}) %>
-<%end%>

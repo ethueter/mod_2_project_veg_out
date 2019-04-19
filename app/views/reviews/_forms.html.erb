@@ -2,21 +2,41 @@
 
     <%=f.hidden_field :restaurant_id, :value => @restaurant.id%>
     <%=f.hidden_field :user_id, :value => @current_user.id%>
-
-    <%=f.label :title%><br>
-    <%=f.text_field :title%><br>
-    <br>
-    <%=f.label :rating%><br>
-    <%=f.select :rating, options_for_select([1, 2, 3, 4, 5])%><br>
-    <br>
-    <%=f.label :price_range%><br>
-    <%=f.select :price_range, options_for_select(['$', '$$', '$$$', '$$$$', '$$$$$'])%><br>
-    <br>
-    <%=f.label :content%><br>
-    <%=f.text_area :content%><br>
-    <br>
-    <%=f.label :favorite_dish%><br>
-    <%=f.collection_select(:favorite_dish, @restaurant.menu_items, :name, :name)%><br>
-    <br>
-    <%=f.submit "Submit Review"%>
+    <div class="field">
+      <%=f.label :title%>
+      <div class="control">
+        <%=f.text_field :title%>
+      </div>
+    </div>
+    <div class="field">
+      <%=f.label :rating%>
+        <div class="control">
+          <div class="select">
+          <%=f.select :rating, options_for_select([1, 2, 3, 4, 5])%>
+          </div>
+        </div>
+    </div>
+    <div class="field">
+      <%=f.label :price_range%>
+        <div class="control">
+          <div class="select">
+            <%=f.select :price_range, options_for_select(['$', '$$', '$$$', '$$$$'])%>
+          </div>
+        </div>
+    </div>
+    <div class="field">
+      <%=f.label :content%>
+        <div class="control">
+          <%=f.text_area :content%>
+        </div>
+    </div>
+    <div class="field">
+      <%=f.label :favorite_dish%>
+      <div class="control">
+        <div class="select">
+          <%=f.collection_select(:favorite_dish, @restaurant.menu_items, :name, :name)%>
+        </div>
+      </div>
+    </div>
+    <a class="button is-success"><%=f.submit "Submit Review"%></a>
 <%end%>

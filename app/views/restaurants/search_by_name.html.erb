@@ -1,10 +1,22 @@
+<section class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        Results for <%= @search %> search:
+      </h1>
+    </div>
+  </div>
+</section><br>
+
+
+
 <% if @results.length > 0 %>
-    <h3>Found <%=@results.length%> Results Matching <%=@search%></h3><br>
+    <h3 class="item has-text-weight-bold">Found <%=@results.length%> Results Matching <%=@search%></h3><br>
     <% @results.each do |r| %>
         <ul><%=link_to r.name, restaurant_path(r)%></ul>
     <% end %>
 <% else %>
-    <h3>It looks like we don't know any restaurants that match <%=@search%>.</h3><br>
+    <h3>Oh no! We couldn't find any restaurants matching:  <%=@search%> </h3> <i class="far fa-sad-tear is-size-2"></i> <br>
         <%=form_tag(search_restaurant_name_path) do%>
             <p>Try again!</p> <%=text_field_tag :search_name%><br>
             <%=submit_tag 'Search'%>
