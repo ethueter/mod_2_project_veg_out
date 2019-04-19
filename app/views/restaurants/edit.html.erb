@@ -1,3 +1,13 @@
-<h1>Edit <%=link_to @restaurant.name, restaurant_path(@restaurant)%>'s Information</h1>
+<section class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        Edit <%=link_to @restaurant.name, restaurant_path(@restaurant)%>'s Information
+      </h1>
+    </div>
+  </div>
+</section><br>
+
+
 
     <%= render 'forms' %>
