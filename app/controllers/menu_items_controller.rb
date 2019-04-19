@@ -36,11 +36,11 @@ class MenuItemsController < ApplicationController
         if  @menu_item.update(menu_items_params)
             redirect_to menu_path(@menu_item.restaurant_id)
         else
-# flash[:edit_menu_fail]="There was an error while submitting your changes. Please try again."
+flash[:failure]="There was an error while submitting your changes. Please try again."
             render :edit
         end
     else
-# flash[:permissions_menu_fail]="You do not have permission to edit this item."
+flash[:failure]="You do not have permission to edit this item."
         redirect_to menu_path(@menu_item.restaurant.id)
     end
   end
@@ -51,10 +51,10 @@ class MenuItemsController < ApplicationController
     @restaurant = Restaurant.find(@menu_item.restaurant_id)
     if  (@current_user.id == @menu_item.user_id) || (@current_user.id == @restaurant.owner_id)
         @menu_item.destroy
-# flash[:destroy_menu_success]="Menu item deleted."
+flash[:success]="Menu item deleted."
         redirect_to menu_path(@restaurant)
     else
-# flash[:permissions_menu_fail]="You do not have permission to delete this restaurant."
+flash[:failure]="You do not have permission to delete this restaurant."
         redirect_to menu_path(@restaurant)
     end
   end
