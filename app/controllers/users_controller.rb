@@ -39,6 +39,6 @@ flash[:failure]="There was a problem while updating your profile. Please try aga
     private
 
     def user_params
-        params.require(:user).permit(:username, :password, :first_name, :last_name, :password_confirmation)
+        params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :password_confirmation)
     end
 end
