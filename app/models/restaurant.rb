@@ -30,6 +30,7 @@ class Restaurant < ApplicationRecord
 
 
   def price_range
+     reviews.map{|pr| pr.price_range.length}.inject{|sum, n| sum + n}/reviews.count
   end
 
   def veggie_rating(restaurant)
