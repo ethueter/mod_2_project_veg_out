@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     @spotlight = @restaurants.sample
-    @top_rated = @restaurants.select{|x| x.avgrating(x) == 5}.sample(3)
+    @top_rated = @restaurants.select{|x| x.avgrating(x) >= 3}.sample(3)
     @most_recent_review = Review.all.order("created_at").last
   end
 
