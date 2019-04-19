@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
     if  @restaurant.save
         redirect_to restaurant_path(@restaurant)
     else
-# flash[:create_restaurant_fail]="There was an error while creating your restaurant. Please try again."
+flash[:failure]="There was an error while creating your restaurant. Please try again."
         render :new
     end
   end
@@ -45,14 +45,14 @@ class RestaurantsController < ApplicationController
     @restaurant=Restaurant.find(params[:id])
     if  @current_user.id == @restaurant.owner_id
         if  @restaurant.update(restaurant_params)
-# flash[:edit_resaurant_success]="You have successfully updated this restaurant."
+flash[:success]="You have successfully updated this restaurant."
             redirect_to restaurant_path(@restaurant)
         else
-# flash[:edit_restaurant_fail]="Unable to save edits to current restaurant. Please check that all required fields have valid entries."
+flash[:failure]="Unable to save edits to current restaurant. Please check that all required fields have valid entries."
             redirect_to edit_restaurant_path(@restaurant)
         end
     else
-# flash[:permissions_restaurant_fail]="You do not have permission to edit this restaurant."
+flash[:failure]="You do not have permission to edit this restaurant."
         redirect_to restaurant_path(@restaurant)
     end
   end
