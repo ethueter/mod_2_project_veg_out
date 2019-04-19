@@ -39,6 +39,9 @@
       <% if @restaurant.onsite_parking %>
         <%= "Onsite Parking Available" %>
       <% end %></p>
+      <p><% @restaurant.price_range.times do%>
+      <i class="fas fa-dollar-sign"></i>
+      <%end%></p>
   </div>
 </article><br>
 

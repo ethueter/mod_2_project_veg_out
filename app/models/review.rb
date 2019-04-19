@@ -5,7 +5,6 @@ class Review < ApplicationRecord
   validates :user_id, presence: true
   validates :restaurant_id, presence: true
   validates :title, presence: true, length: {minimum: 5}
-  validates :content, presence: true, length: {minimum: 25, maximum: 500}
   validates :rating, presence: true
   validates :price_range, presence: true
   validates :favorite_dish, presence: true
