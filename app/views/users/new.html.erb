@@ -1,3 +1,9 @@
-<h1>Create a New User</h1>
+<h1>Create a New User</h1><br>
+<% if flash[:failure] %>
+    <div class="notification is-danger"><%= flash[:failure] %></div>
+<% else %>
+    <br>
+    <br>
+<% end %>
 
 <%= render 'forms' %>

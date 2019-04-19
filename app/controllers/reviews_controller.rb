@@ -32,10 +32,10 @@ class ReviewsController < ApplicationController
         @current_user=current_user
         if  @current_user.id == @review.user_id
             if  @review.update(review_params)
-# flash[:update_review_success]="Your review has been successfully updated."
+flash[:notice]="Your review has been successfully updated."
                 redirect_to review_path(@review)
             else
-# flash[:update_review_fail]="There was an error while updating your review. Please try again."
+flash[:notice]="There was an error while updating your review. Please try again."
                 redirect_to edit_review_path(@review)
             end
         else
