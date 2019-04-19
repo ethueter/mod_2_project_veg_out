@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
-    @current_user=current_user
+    @current_user = current_user
   end
 
   def create

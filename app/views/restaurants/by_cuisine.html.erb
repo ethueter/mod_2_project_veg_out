@@ -1,4 +1,15 @@
-<h1>Here is a list of Restaurants that serve <%= @cuisine.name %></h1>
+<section class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        Here is a list of Restaurants that serve <%= @cuisine.name %>
+      </h1>
+    </div>
+  </div>
+</section><br>
+
+
+
 
 
 <% @restaurants.map do |r| %>

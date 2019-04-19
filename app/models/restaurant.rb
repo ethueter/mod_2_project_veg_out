@@ -7,9 +7,9 @@ class Restaurant < ApplicationRecord
   has_many  :cuisines, through: :menu_items
 
   validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :phone, length: { is: 10}
-  validates :description, length: {minimum: 100}
+  # validates :name, uniqueness: true
+  # validates :phone, length: { is: 10}
+  # validates :description, length: {minimum: 100}
 
 
 
@@ -30,7 +30,7 @@ class Restaurant < ApplicationRecord
 
 
   def price_range
-    if reviews.count != nil
+    if reviews.count != 0
      reviews.map{|pr| pr.price_range.length}.inject{|sum, n| sum + n}/reviews.count
     else
       1
