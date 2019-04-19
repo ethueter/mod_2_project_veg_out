@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
             redirect_to review_path(@review)
         else
 # flash[:create_review_fail]="Your review could not be submitted. Please check that all fields contain valid entries."
-            redirect_to edit_review_path(@review)
+            render :new
         end
     end
 
