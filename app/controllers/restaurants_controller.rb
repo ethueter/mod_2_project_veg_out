@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
     @spotlight = @restaurants.sample
     @top_rated = @restaurants.select{|x| x.avgrating(x) >= 3}.sample(3)
     @most_recent_review = Review.all.order("created_at").last
+    @top_veggie = @restaurants.select{|x| x.veggie_rating(x) >= 75}.sample(3)
   end
 
   def by_cuisine

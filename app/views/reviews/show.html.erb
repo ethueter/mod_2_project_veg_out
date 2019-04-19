@@ -44,7 +44,9 @@
             <p class="button"><%=link_to 'Edit', edit_review_path(@review)%></p>
             <a class="button is-success"><%=button_to 'Delete', review_path(@review), :method => :delete%></a>
           <%end%>
-     
+
 
   </div>
 </article>
+
+<button class="button"><%= link_to "Back to Restaurant", restaurant_path(@review.restaurant)%></button>
