@@ -1,7 +1,3 @@
-    <% if flash[:login_fail] %>
-        <%= flash[:login_fail] %>
-    <%end%>
-
     <%=form_tag '/login' do%>
     <div class="field">
       <label class="label"><%=label_tag :user_name%></label>

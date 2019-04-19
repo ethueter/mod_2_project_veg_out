@@ -21,11 +21,20 @@
       VegOut
     </a>
     </div>
-        <%= link_to("Login", login_path, class: 'navbar-item')%>
+        <% if session[:user_id] %>
+          <%= link_to("Logout", logout_path, class: 'navbar-item')%>
+        <% else %>
+          <%= link_to("Login", login_path, class: 'navbar-item')%>
+        <% end %>
         <%= link_to("Home", restaurants_path, class: 'navbar-item')%>
-      
-
     </nav>
+    <% if flash[:failure] %>
+      <div class="notification is-danger"><%= flash[:failure]%></div>
+    <% elsif flash[:success] %>
+      <div class="notification is-success"><%= flash[:success]%></div>
+    <% else %>
+    <% end %>
+    
       <div class="container">
             <%= yield %>
       </div>

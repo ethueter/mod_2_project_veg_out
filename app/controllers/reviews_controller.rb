@@ -16,8 +16,8 @@ class ReviewsController < ApplicationController
             @review.save
             redirect_to review_path(@review)
         else
-# flash[:create_review_fail]="Your review could not be submitted. Please check that all fields contain valid entries."
-            render :new
+          flash[:failure]="Your review could not be submitted. Please check that all fields contain valid entries."
+            redirect_to edit_review_path(@review)
         end
     end
 
@@ -32,14 +32,14 @@ class ReviewsController < ApplicationController
         @current_user=current_user
         if  @current_user.id == @review.user_id
             if  @review.update(review_params)
-# flash[:update_review_success]="Your review has been successfully updated."
+flash[:success]="Your review has been successfully updated."
                 redirect_to review_path(@review)
             else
-# flash[:update_review_fail]="There was an error while updating your review. Please try again."
+flash[:failure]="There was an error while updating your review. Please try again."
                 redirect_to edit_review_path(@review)
             end
         else
-# flash[:permissions_review_fail]="You do not have permission to edit this review."
+flash[:failure]="You do not have permission to edit this review."
             redirect_to review_path(@review)
         end
     end
@@ -50,10 +50,10 @@ class ReviewsController < ApplicationController
         @restaurant=@review.restaurant
         if @current_user.id == @review.user_id
             @review.destroy
-# flash[:delete_review_success]="Your review was successfully deleted."
+flash[:success]="Your review was successfully deleted."
             redirect_to restaurant_path(@restaurant)
         else
-# flash[:delete_review_fail]="Could not delete this review. Either you do not have permission or the review no longer exists."
+flash[:failure]="Could not delete this review. Either you do not have permission or the review no longer exists."
             redirect_to review_path(@review)
         end
     end
