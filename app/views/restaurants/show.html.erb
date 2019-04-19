@@ -42,6 +42,18 @@
   </div>
 </article><br>
 
+<div class="item has-text-wieghted-bold">
+  <h3>Veggie Rating:</h3>
+    <% if @restaurant.veggie_rating(@restaurant) > 60 %>
+        <i class="fas fa-seedling is-size-2"></i>
+      <%elsif @restaurant.veggie_rating(@restaurant) > 40 && @restaurant.veggie_rating(@restaurant) < 60 %>
+        <i class="fas fa-meh is-size-2"></i>
+      <%else%>
+        <i class="fas fa-angry is-size-2"></i>
+    <%end%>
+    <p>Veggie Ratings are determined by the % of Vegetarian/Vegan item on the menu.</p><br>
+  </div>
+
 <%= link_to "Create a Review For This Restaurant", review_restaurant_path(@restaurant)%><br>
 
 <h3 class="title is-size-5">Reviews:</h3>

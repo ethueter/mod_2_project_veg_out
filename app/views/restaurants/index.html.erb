@@ -36,6 +36,13 @@
       <% end %>
   </ul><br>
 
+  <p class="title is-size-5">Top Veggie Spots:</p>
+  <ul>
+    <% @top_veggie.each do |restaurant| %>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>
+      <% end %>
+  </ul><br>
+
 
 
 
