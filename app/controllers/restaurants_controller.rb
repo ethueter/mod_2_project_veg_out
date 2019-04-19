@@ -75,7 +75,7 @@ class RestaurantsController < ApplicationController
         @restaurant.destroy
         redirect_to restaurants_path
     else
-# flash[:permissions_restaurant_fail]="You do not have permission to delete this restaurant."
+flash[:failure]="You do not have permission to delete this restaurant."
         redirect_to restaurant_path(@restaurant)
     end
   end
